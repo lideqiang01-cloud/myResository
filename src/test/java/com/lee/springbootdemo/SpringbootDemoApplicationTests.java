@@ -1,15 +1,21 @@
 package com.lee.springbootdemo;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lee.springbootdemo.entity.ASCategory;
 import com.lee.springbootdemo.entity.CmsRole;
 import com.lee.springbootdemo.mapper.ASCategoryMapper;
+import com.lee.springbootdemo.mapper.CmsRoleMapper;
 import com.lee.springbootdemo.service.CmsRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import javax.annotation.Resource;
 import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootDemoApplicationTests {
@@ -20,6 +26,9 @@ public class SpringbootDemoApplicationTests {
     @Autowired
     private CmsRoleService cmsRoleService;
 
+    @Resource
+    private CmsRoleMapper cmsRoleMapper;
+
     @Test
     public void contextLoads() {
         System.out.println("run in ----------------->test");
@@ -29,7 +38,7 @@ public class SpringbootDemoApplicationTests {
 
 
     @Test
-    public void druidTest(){
+    public void druidTest() {
 
         CmsRole cmsRole = cmsRoleService.getById(1111);
         System.out.println(cmsRole.toString());
@@ -38,6 +47,17 @@ public class SpringbootDemoApplicationTests {
         cmsRoleList.forEach(System.out::print);
     }
 
-
-
+    /**
+     * @param
+     * @return
+     * @throws
+     * @author ldq
+     * @date 2019-09-21 10:57:46
+     */
+    @Test
+    public void pageTest() {
+        Page<CmsRole> page = new Page<>(2, 2);
+        IPage<CmsRole> page1 = cmsRoleService.page(page, null);
+        System.out.println();
+    }
 }

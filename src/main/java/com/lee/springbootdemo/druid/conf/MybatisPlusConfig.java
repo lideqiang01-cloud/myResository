@@ -1,4 +1,5 @@
 package com.lee.springbootdemo.druid.conf;
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
@@ -15,6 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class MybatisPlusConfig {
      * @return
      */
     @Bean
+    @Profile("dev")
     public PerformanceInterceptor performanceInterceptor() {
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
         /*<!-- SQL 执行性能分析，开发环境使用，线上不推荐。 maxTime 指的是 sql 最大执行时长 -->*/
@@ -52,7 +55,7 @@ public class MybatisPlusConfig {
         return new PaginationInterceptor();
     }
 
-   /* // 配置数据源
+ /*  // 配置数据源
     @Bean(name="dataSource")
     @ConfigurationProperties(prefix="spring.datasource")
     public DataSource dataSource(){
@@ -79,7 +82,7 @@ public class MybatisPlusConfig {
     @Primary
     public DataSource multipleDataSource(@Qualifier("db1") DataSource db1, @Qualifier("db2") DataSource db2) {
         MultipleDataSource multipleDataSource = new MultipleDataSource();
-        Map< Object, Object > targetDataSources = new HashMap<>();
+        Map< Object, Object > targetDataSources = new HashMap<>(16);
         targetDataSources.put(DataSourceEnum.DB1.getValue(), db1);
         targetDataSources.put(DataSourceEnum.DB2.getValue(), db2);
         //添加数据源
@@ -106,8 +109,10 @@ public class MybatisPlusConfig {
       configuration.setMapUnderscoreToCamelCase(true);
       configuration.setCacheEnabled(false);
       sqlSessionFactory.setConfiguration(configuration);
-      sqlSessionFactory.setPlugins(new Interceptor[]{ //PerformanceInterceptor(),OptimisticLockerInterceptor()
-              paginationInterceptor() //添加分页功能
+      sqlSessionFactory.setPlugins(new Interceptor[]{
+              //PerformanceInterceptor(),OptimisticLockerInterceptor()
+              paginationInterceptor()
+              //添加分页功能
       });
       //sqlSessionFactory.setGlobalConfig(globalConfiguration());
       return sqlSessionFactory.getObject();
