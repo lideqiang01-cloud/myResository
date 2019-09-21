@@ -58,6 +58,6 @@ public class SpringbootDemoApplicationTests {
     public void pageTest() {
         Page<CmsRole> page = new Page<>(2, 2);
         IPage<CmsRole> page1 = cmsRoleService.page(page, null);
-        System.out.println();
+        System.out.println(page1);
     }
 }
