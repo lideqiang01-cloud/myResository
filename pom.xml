@@ -23,6 +23,7 @@
         <system.node.version>v10.16.3</system.node.version>
         <!-- npm插件版本,用于集成angular服务 -->
         <system.npm.version>6.9.0</system.npm.version>
+        <!--druid版本，数据连接池-->
         <druid.version>1.1.9</druid.version>
 
     </properties>
@@ -51,25 +52,6 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.1</version>
         </dependency>
-        <!--集成mybatis -->
-        <!-- 与数据库操作相关的依赖 -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- mybatisplus集成 -->
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>mybatisplus-spring-boot-starter</artifactId>-->
-        <!--<version>1.0.5</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>mybatis-plus</artifactId>-->
-        <!--<version>2.1.8</version>-->
-        <!--</dependency>-->
-
 
         <!-- 引入Druid依赖，阿里巴巴所提供的数据源 -->
         <dependency>
@@ -127,6 +109,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.54</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.2</version>
         </dependency>
 
     </dependencies>

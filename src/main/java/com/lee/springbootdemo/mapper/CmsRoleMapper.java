@@ -4,6 +4,10 @@ import com.lee.springbootdemo.druid.annocation.DataSource;
 import com.lee.springbootdemo.druid.enums.DataSourceEnum;
 import com.lee.springbootdemo.entity.CmsRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lee.springbootdemo.resultvo.CmsRoleVO;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CmsRoleMapper extends BaseMapper<CmsRole> {
 
+    /**
+     * 自定义多表查询
+     * @return
+     */
+    @Select("select role.create_time,role.role_name,cmsuser.login_name,cmsuser.age from cms_role role,cms_user cmsuser where role.role_sign = cmsuser.login_name ;\n")
+    public List<CmsRoleVO> queryDoubleTable();
 }

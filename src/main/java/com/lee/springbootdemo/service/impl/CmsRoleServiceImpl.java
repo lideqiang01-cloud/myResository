@@ -5,6 +5,7 @@ import com.lee.springbootdemo.druid.annocation.DataSource;
 import com.lee.springbootdemo.druid.enums.DataSourceEnum;
 import com.lee.springbootdemo.entity.CmsRole;
 import com.lee.springbootdemo.mapper.CmsRoleMapper;
+import com.lee.springbootdemo.resultvo.CmsRoleVO;
 import com.lee.springbootdemo.service.CmsRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,14 @@ public class CmsRoleServiceImpl extends ServiceImpl<CmsRoleMapper, CmsRole> impl
     @DataSource(DataSourceEnum.DB1)
     public List<CmsRole> list(Wrapper<CmsRole> queryWrapper){
         return super.list(null);
+    }
+
+    /**
+     * 自定义方法实现关联查询
+     * @return
+     */
+    @Override
+    public List<CmsRoleVO> doQueryDoubleTable() {
+        return this.baseMapper.queryDoubleTable();
     }
 }
