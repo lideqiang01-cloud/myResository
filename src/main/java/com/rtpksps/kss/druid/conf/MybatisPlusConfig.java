@@ -28,7 +28,7 @@ import java.util.Map;
  * @date 2019/9/18 0018下午 17:09
  */
 @Configuration
-@MapperScan("com.rtpksps.kss.mapper")
+@MapperScan("com.rtpksps.kss.base.mapper")
 public class MybatisPlusConfig {
     @Bean(name = "db1")
     @ConfigurationProperties(prefix = "spring.datasource.druid.db1" )
