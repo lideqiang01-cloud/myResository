@@ -8,10 +8,10 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lee</groupId>
-    <artifactId>springboot-demo</artifactId>
+    <groupId>com.rtpksps-kss</groupId>
+    <artifactId>kss</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-demo</name>
+    <name>rtpksps-kss</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
