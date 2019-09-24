@@ -1,21 +1,20 @@
-package com.lee.springbootdemo.resultvo;
+package com.lee.springbootdemo.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 import java.util.Date;
 
 /**
  * @author Administrator
- * @title: CmsRoleVO
+ * @title: CmsRoleDto
  * @projectName springboot-demo
  * @description: TODO
  * @date 2019/9/23 0023上午 10:26
  */
 @Data
-public class CmsRoleVO {
+public class CmsRoleDto {
     @TableId(value="role_id")
     private Long roleId;
     @TableField(value = "create_time")

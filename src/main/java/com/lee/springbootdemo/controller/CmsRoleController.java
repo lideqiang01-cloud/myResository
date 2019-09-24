@@ -4,8 +4,8 @@ package com.lee.springbootdemo.controller;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lee.springbootdemo.dto.CmsRoleDto;
 import com.lee.springbootdemo.entity.CmsRole;
-import com.lee.springbootdemo.resultvo.CmsRoleVO;
 import com.lee.springbootdemo.service.CmsRoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class CmsRoleController {
     }
     @RequestMapping("/queryMoreTable")
     @ResponseBody
-    public List<CmsRoleVO> queryDoubleTable(){
+    public List<CmsRoleDto> queryDoubleTable(){
         System.out.println(JSON.toJSONString(cmsRoleService.doQueryDoubleTable()));
         System.out.println(cmsRoleService.doQueryDoubleTable());
         return cmsRoleService.doQueryDoubleTable();

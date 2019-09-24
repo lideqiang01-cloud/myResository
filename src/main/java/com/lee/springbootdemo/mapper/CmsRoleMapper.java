@@ -1,10 +1,8 @@
 package com.lee.springbootdemo.mapper;
 
-import com.lee.springbootdemo.druid.annocation.DataSource;
-import com.lee.springbootdemo.druid.enums.DataSourceEnum;
 import com.lee.springbootdemo.entity.CmsRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lee.springbootdemo.resultvo.CmsRoleVO;
+import com.lee.springbootdemo.dto.CmsRoleDto;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -24,5 +22,5 @@ public interface CmsRoleMapper extends BaseMapper<CmsRole> {
      * @return
      */
     @Select("select role.create_time,role.role_name,cmsuser.login_name,cmsuser.age from cms_role role,cms_user cmsuser where role.role_sign = cmsuser.login_name ;\n")
-    public List<CmsRoleVO> queryDoubleTable();
+    public List<CmsRoleDto> queryDoubleTable();
 }
